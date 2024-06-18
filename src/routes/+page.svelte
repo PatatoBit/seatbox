@@ -1,15 +1,25 @@
+<script>
+	import { signOut } from '$lib/auth';
+	import { auth } from '$lib/firebase';
+
+	const userData = {
+		name: auth.currentUser?.displayName,
+		email: auth.currentUser?.email
+	};
+</script>
+
 <div class="container">
 	<h1>จองโต๊ะเรียนออนไลน์</h1>
 
 	<div class="main-view">
 		<div class="seats">
-			<h1>Hello world</h1>
+			<img src="https://placehold.co/600x400" alt="Placeholder" />
 		</div>
 
 		<div class="details">
 			<div>
-				<h2>Chayapat Pakham</h2>
-				<p>pathonscript@gmail.com</p>
+				<h2>{userData.name}</h2>
+				<p>{userData.email}</p>
 				<hr />
 			</div>
 
@@ -23,8 +33,22 @@
 				<p>1 วัน 2 ชั่วโมง 34 นาที</p>
 				<p>(1/6/24, 18:00)</p>
 			</div>
+
+			<div class="order-card">
+				<h3>จองล่วงหน้า</h3>
+				<h2 class="order-text">A2</h2>
+
+				<h3>ค่าจองล้วงหน้า</h3>
+				<h2 class="order-text">฿5</h2>
+
+				<br />
+
+				<button>จองที่นั่ง</button>
+			</div>
 		</div>
 	</div>
+
+	<button on:click={signOut}>ลงชื่อออก</button>
 </div>
 
 <style lang="scss">
@@ -39,7 +63,9 @@
 	.main-view {
 		display: flex;
 		flex-direction: row;
+		gap: 2em;
 		flex-wrap: wrap;
+		max-width: 60rem;
 
 		.details {
 			display: flex;
@@ -48,5 +74,40 @@
 
 			gap: 2em;
 		}
+	}
+
+	.seats {
+		object-fit: cover;
+		flex: 2;
+		width: 100%;
+	}
+
+	.details {
+		display: flex;
+		flex-direction: column;
+		padding: 3em;
+		flex: 1;
+		width: 100%;
+
+		gap: 2em;
+		background-image: linear-gradient(#fefefe, #c8d9f2);
+	}
+
+	.order-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		max-width: 15rem;
+
+		padding: 2em;
+		padding-bottom: 2.5em;
+
+		background-color: #f0f0f0;
+	}
+
+	.order-text {
+		font-size: 2em;
 	}
 </style>
