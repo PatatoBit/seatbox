@@ -1,26 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap');
 
+$primary: #3362a8;
+$secondary: #ff8c22;
+$accent: #71aaff;
+$softBlack: #212121;
+$softWhite: #fefefe;
+$softGrey: #b4b4b4;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+
+	margin: 0;
+	padding: 0;
+}
+
 h1 {
 	font-family: 'IBM Plex Sans Thai', sans-serif;
 	font-weight: 700;
+	font-size: 32px;
 }
 
 h2 {
 	font-family: 'IBM Plex Sans Thai', sans-serif;
 	font-weight: 600;
-
-	font-size: 21;
+	font-size: 22px;
 }
 
 h3 {
 	font-family: 'IBM Plex Sans Thai', sans-serif;
 	font-weight: 500;
-
-	font-size: 16;
+	font-size: 18px;
 }
 
 p {
 	font-family: 'IBM Plex Sans Thai', sans-serif;
 	font-weight: 400;
-	font-size: 16;
+	font-size: 18px;
+}
+
+button {
+	background-color: $primary;
+	color: $softWhite;
+
+	font-family: 'IBM Plex Sans Thai', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+
+	padding: 0.5em 2em;
+	border-width: 0;
+	border-radius: 0.5em;
+
+	box-shadow: 0 0.4em 0 #223080;
+
+	&:hover {
+		box-shadow: 0 0.2em 0 #223080;
+		transform: translateY(0.2em);
+	}
+
+	&:active {
+		box-shadow: none;
+		transform: translateY(0.4em);
+	}
+}
+
+.secondary {
+	background-color: $softWhite;
+	border: 2px solid $secondary;
+	color: $secondary;
 }
