@@ -56,7 +56,6 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
 		min-height: 100vh;
 	}
 
@@ -77,9 +76,13 @@
 	}
 
 	.seats {
-		object-fit: cover;
 		flex: 2;
-		width: 100%;
+		min-width: 25rem;
+
+		img {
+			object-fit: cover;
+			width: 100%;
+		}
 	}
 
 	.details {
@@ -98,8 +101,6 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-
-		max-width: 15rem;
 
 		padding: 2em;
 		padding-bottom: 2.5em;
