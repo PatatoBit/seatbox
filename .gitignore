@@ -1,5 +1,8 @@
 node_modules
 
+# Firestore
+/src/lib/firebase.ts
+
 # Output
 .output
 .vercel
