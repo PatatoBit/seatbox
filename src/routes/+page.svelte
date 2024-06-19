@@ -35,11 +35,17 @@
 			</div>
 
 			<div class="order-card">
-				<h3>จองล่วงหน้า</h3>
-				<h2 class="order-text">A2</h2>
+				<div class="order-row">
+					<div id="order-seat">
+						<h3>จองล่วงหน้า</h3>
+						<h2 class="order-text">A2</h2>
+					</div>
 
-				<h3>ค่าจองล่วงหน้า</h3>
-				<h2 class="order-text">฿5</h2>
+					<div id="order-cost">
+						<h3>ค่าจองล่วงหน้า</h3>
+						<h2 class="order-text">฿5</h2>
+					</div>
+				</div>
 
 				<br />
 
@@ -102,10 +108,36 @@
 		align-items: center;
 		justify-content: center;
 
-		padding: 2em;
-		padding-bottom: 2.5em;
-
+		padding: 1.5em;
 		background-color: #f0f0f0;
+
+		.order-row {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+
+			text-align: center;
+		}
+
+		@media screen and (max-width: 600px) {
+			.order-row {
+				flex-direction: row;
+			}
+
+			#order-seat {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			#order-cost {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+			}
+		}
 	}
 
 	.order-text {
