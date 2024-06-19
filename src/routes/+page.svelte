@@ -1,11 +1,14 @@
-<script>
+<script lang="ts">
 	import { signOut } from '$lib/auth';
+	import SeatPicker from '$lib/components/SeatPicker.svelte';
 	import { auth } from '$lib/firebase';
 
 	const userData = {
 		name: auth.currentUser?.displayName,
 		email: auth.currentUser?.email
 	};
+
+	let selectedSeats: string[];
 </script>
 
 <div class="container">
@@ -13,7 +16,7 @@
 
 	<div class="main-view">
 		<div class="seats">
-			<img src="https://placehold.co/600x400" alt="Placeholder" />
+			<SeatPicker bind:seats={selectedSeats} />
 		</div>
 
 		<div class="details">
@@ -38,12 +41,12 @@
 				<div class="order-row">
 					<div id="order-seat">
 						<h3>จองล่วงหน้า</h3>
-						<h2 class="order-text">A2</h2>
+						<h2 class="order-text">{selectedSeats}</h2>
 					</div>
 
 					<div id="order-cost">
 						<h3>ค่าจองล่วงหน้า</h3>
-						<h2 class="order-text">฿5</h2>
+						<h2 class="order-text">฿{selectedSeats?.length * 5}</h2>
 					</div>
 				</div>
 
@@ -84,17 +87,11 @@
 	.seats {
 		flex: 2;
 		min-width: 25rem;
-
-		img {
-			object-fit: cover;
-			width: 100%;
-		}
 	}
 
 	.details {
 		display: flex;
 		flex-direction: column;
-		padding: 3em;
 		flex: 1;
 		width: 100%;
 
