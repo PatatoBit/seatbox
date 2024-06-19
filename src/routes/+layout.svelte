@@ -1,6 +1,6 @@
 <script lang="ts">
+	import LoginPage from '$lib/components/LoginPage.svelte';
 	import { onAuthStateChanged } from 'firebase/auth';
-	import LoginPage from '$lib/components/loginPage.svelte';
 
 	import { auth } from '$lib/firebase';
 	import '../styles/globals.scss';
