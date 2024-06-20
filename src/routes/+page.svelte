@@ -14,13 +14,12 @@
 <div class="container">
 	<div class="main-view">
 		<h2>เริ่มเปิดจองโต๊ะใน</h2>
-
 		<h1>31 ชั่มโมง 17 นาที 20 วินาที</h1>
 
 		<div class="details">
 			<div>12/6/24 - 17/6/24</div>
 
-			<div>
+			<div id="user-details">
 				{#if userData}
 					<h3>{userData.name}</h3>
 					<p>{userData.email}</p>
@@ -61,16 +60,16 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
 		max-width: 100%;
 		min-height: 100vh;
+
+		padding-top: 5rem;
 	}
 
 	.main-view {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 2em;
 		flex-wrap: wrap;
 		max-width: 70rem;
 	}
@@ -86,7 +85,16 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		align-items: flex-end;
 		width: 100%;
+
+		margin: 3rem 0;
+
+		#user-details {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+		}
 	}
 
 	.seats {
