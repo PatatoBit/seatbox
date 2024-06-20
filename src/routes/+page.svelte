@@ -29,12 +29,16 @@
 			</div>
 		</div>
 
+		<hr id="class-screen" />
+
+		<h3 style="color: #71aaff; margin-top: 0.5rem">หน้าห้อง</h3>
+
 		<div class="main-picker">
 			<div class="seats">
 				<SeatPicker bind:seats={selectedSeats} />
 			</div>
 
-			<div class="order-card">
+			<!-- <div class="order-card">
 				<div class="order-row">
 					<div id="order-seat">
 						<h3>จองล่วงหน้า</h3>
@@ -48,9 +52,11 @@
 
 					<button>จองที่</button>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
+
+	<br />
 
 	<button on:click={signOut}>ลงชื่อออก</button>
 </div>
@@ -64,6 +70,12 @@
 		min-height: 100vh;
 
 		padding-top: 5rem;
+	}
+
+	#class-screen {
+		width: 100%;
+		height: 0;
+		border: 1px solid #71aaff;
 	}
 
 	.main-view {
@@ -88,7 +100,8 @@
 		align-items: flex-end;
 		width: 100%;
 
-		margin: 3rem 0;
+		margin-top: 3rem;
+		margin-bottom: 1rem;
 
 		#user-details {
 			display: flex;

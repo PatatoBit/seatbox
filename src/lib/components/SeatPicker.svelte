@@ -1,36 +1,57 @@
 <script lang="ts">
+	import Seat from './Seat.svelte';
+
 	export let seats: string[] = [];
 
 	seats = ['A2', 'A3'];
 </script>
 
 <div class="container">
-	<div class="class-front">
-		<h3>หน้าห้อง</h3>
-
-		<div class="seats">
-			{#each [1, 2, 3, 4, 5, 6, 7, 8, 9] as col}
-				<div class="row">
-					{#each ['A', 'B', 'C', 'D'] as row}
-						<div class="seat">
-							{row}{col}
-						</div>
-					{/each}
-				</div>
-			{/each}
-
-			{#each [1, 2, 3, 4] as col}
-				<div class="row">
-					{#each ['E'] as row}
-						<div class="seat">
-							{row}{col}
-						</div>
-					{/each}
+	<table class="seats">
+		<tbody>
+			<tr>
+				{#each [1, 2, 3] as rowSeat}
 					<!-- content here -->
-				</div>
-			{/each}
-		</div>
-	</div>
+					<Seat seatPosition={`A${rowSeat}`} />
+				{/each}
+
+				<div class="block"></div>
+
+				{#each [4, 5, 6] as rowSeat}
+					<!-- content here -->
+					<Seat seatPosition={`A${rowSeat}`} />
+				{/each}
+
+				<div class="block"></div>
+
+				{#each [7, 8, 9] as rowSeat}
+					<!-- content here -->
+					<Seat seatPosition={`A${rowSeat}`} />
+				{/each}
+			</tr>
+
+			<tr>
+				{#each [1, 2, 3] as rowSeat}
+					<!-- content here -->
+					<Seat seatPosition={`B${rowSeat}`} />
+				{/each}
+
+				<div class="block"></div>
+
+				{#each [4, 5, 6] as rowSeat}
+					<!-- content here -->
+					<Seat seatPosition={`B${rowSeat}`} />
+				{/each}
+
+				<div class="block"></div>
+
+				{#each [7, 8, 9] as rowSeat}
+					<!-- content here -->
+					<Seat seatPosition={`B${rowSeat}`} />
+				{/each}
+			</tr></tbody
+		>
+	</table>
 </div>
 
 <style lang="scss">
@@ -41,12 +62,6 @@
 		text-align: center;
 	}
 
-	.seats {
-		display: grid;
-		grid-template-columns: repeat(9, 1fr);
-		align-items: center;
-	}
-
 	.seat {
 		display: flex;
 		justify-content: center;
@@ -54,5 +69,10 @@
 		width: 50px;
 		height: 50px;
 		border: 1px solid #000;
+	}
+
+	.block {
+		width: 50px;
+		height: 50px;
 	}
 </style>
