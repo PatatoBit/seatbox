@@ -12,29 +12,27 @@
 </script>
 
 <div class="container">
-	<h1>จองโต๊ะเรียนออนไลน์</h1>
-
 	<div class="main-view">
-		<div class="seats">
-			<SeatPicker bind:seats={selectedSeats} />
-		</div>
+		<h2>เริ่มเปิดจองโต๊ะใน</h2>
+
+		<h1>31 ชั่มโมง 17 นาที 20 วินาที</h1>
 
 		<div class="details">
-			<div>
-				<h2>{userData.name}</h2>
-				<p>{userData.email}</p>
-				<hr />
-			</div>
+			<div>12/6/24 - 17/6/24</div>
 
 			<div>
-				<h3>จองที่นั่งสัปดาห์ที่</h3>
-				<p>2/6/24 - 7/6/24</p>
+				{#if userData}
+					<h3>{userData.name}</h3>
+					<p>{userData.email}</p>
+				{:else}
+					<p>กรุณาเข้าสู่ระบบ</p>
+				{/if}
 			</div>
+		</div>
 
-			<div>
-				<h3>เปิดจองในอีก</h3>
-				<p>1 วัน 2 ชั่วโมง 34 นาที</p>
-				<p>(1/6/24, 18:00)</p>
+		<div class="main-picker">
+			<div class="seats">
+				<SeatPicker bind:seats={selectedSeats} />
 			</div>
 
 			<div class="order-card">
@@ -48,11 +46,9 @@
 						<h3>ค่าจองล่วงหน้า</h3>
 						<h2 class="order-text">฿{selectedSeats?.length * 5}</h2>
 					</div>
+
+					<button>จองที่</button>
 				</div>
-
-				<br />
-
-				<button>จองที่นั่ง</button>
 			</div>
 		</div>
 	</div>
@@ -65,38 +61,37 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
+		max-width: 100%;
 		min-height: 100vh;
 	}
 
 	.main-view {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
+		align-items: center;
 		gap: 2em;
 		flex-wrap: wrap;
-		max-width: 60rem;
+		max-width: 70rem;
+	}
 
-		.details {
-			display: flex;
-			flex-direction: column;
-			padding: 1em;
+	.main-picker {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+	}
 
-			gap: 2em;
-		}
+	.details {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
 	}
 
 	.seats {
 		flex: 2;
 		min-width: 25rem;
-	}
-
-	.details {
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-		width: 100%;
-
-		gap: 2em;
-		background-image: linear-gradient(#fefefe, #c8d9f2);
 	}
 
 	.order-card {
