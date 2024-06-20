@@ -6,6 +6,8 @@
 	<h1>SeatBox</h1>
 	<p>จองโต๊ะเรียนออนไลน์</p>
 
+	<br />
+
 	<button on:click={signInWithGoogle}>ล็อกอิน</button>
 </main>
 

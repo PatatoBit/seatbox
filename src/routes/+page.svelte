@@ -83,14 +83,12 @@
 		flex-direction: column;
 		align-items: center;
 		flex-wrap: wrap;
-		max-width: 70rem;
 	}
 
 	.main-picker {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		width: 100%;
 	}
 
 	.details {

@@ -1,9 +1,9 @@
 <script lang="ts">
+	import '../styles/globals.scss';
 	import LoginPage from '$lib/components/LoginPage.svelte';
 	import { onAuthStateChanged } from 'firebase/auth';
 
 	import { auth } from '$lib/firebase';
-	import '../styles/globals.scss';
 
 	let isSignedIn: boolean = false;
 
