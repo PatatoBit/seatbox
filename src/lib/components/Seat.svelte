@@ -13,6 +13,8 @@
 		align-items: center;
 		width: 50px;
 		height: 50px;
-		border: 1px solid #000;
+		border: 1px solid #c0c0c0;
+
+		border-radius: 0.3rem;
 	}
 </style>
