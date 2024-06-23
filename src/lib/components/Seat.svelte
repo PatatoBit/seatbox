@@ -1,10 +1,20 @@
 <script lang="ts">
 	export let seatPosition: string;
-	export let onClick: () => void;
+	export let seats: string[];
+
+	function addOrRemove(seat: string) {
+		if (seats.includes(seat)) {
+			seats = seats.filter((s) => s !== seat);
+		} else {
+			seats = [...seats, seat];
+		}
+
+		console.log(seats);
+	}
 </script>
 
 <td>
-	<button class="seat" on:click={onClick}>
+	<button class="seat" on:click={() => addOrRemove(seatPosition)}>
 		<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
 	</button>
 </td>

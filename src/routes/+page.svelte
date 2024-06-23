@@ -8,7 +8,7 @@
 		email: auth.currentUser?.email
 	};
 
-	let selectedSeats: string[];
+	let selectedSeats: string[] = ['A1', 'A2'];
 </script>
 
 <div class="container">
@@ -35,6 +35,7 @@
 
 		<div class="main-picker">
 			<div class="seats">
+				<h3>{selectedSeats.toString()}</h3>
 				<SeatPicker bind:seats={selectedSeats} />
 			</div>
 
