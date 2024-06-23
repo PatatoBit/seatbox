@@ -18,7 +18,12 @@
 
 <td>
 	<button class="seat" on:click={() => addOrRemove(seatPosition)}>
-		<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
+		{#if seats.includes(seatPosition)}
+			<img src="/icons/selectedCheck.svg" alt="Seat {seatPosition} Selected" />
+		{:else}
+			<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
+			<!-- else content here -->
+		{/if}
 	</button>
 </td>
 
