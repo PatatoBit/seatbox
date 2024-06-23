@@ -3,7 +3,9 @@
 </script>
 
 <td>
-	<div class="seat">{seatPosition}</div>
+	<div class="seat">
+		<img src="/icons/seatIcon.png" alt="Seat Icon" />
+	</div>
 </td>
 
 <style lang="scss">
@@ -13,8 +15,12 @@
 		align-items: center;
 		width: 50px;
 		height: 50px;
-		border: 1px solid #c0c0c0;
-
 		border-radius: 0.3rem;
+
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
 	}
 </style>
