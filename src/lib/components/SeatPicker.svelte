@@ -4,6 +4,16 @@
 	export let seats: string[] = [];
 
 	seats = ['A2', 'A3'];
+
+	function addOrRemove(seat: string) {
+		if (seats.includes(seat)) {
+			seats = seats.filter((s) => s !== seat);
+		} else {
+			seats = [...seats, seat];
+		}
+
+		console.log(seats);
+	}
 </script>
 
 <table class="seats">
@@ -12,21 +22,32 @@
 			<tr>
 				{#each [1, 2, 3] as rowSeat}
 					<!-- content here -->
-					<Seat seatPosition={`${rowLetter}${rowSeat}`} />
+					<Seat
+						onClick={() => addOrRemove(`${rowLetter}${rowSeat}`)}
+						seatPosition={`${rowLetter}${rowSeat}`}
+					/>
 				{/each}
 
 				<div class="block"></div>
 
 				{#each [4, 5, 6] as rowSeat}
 					<!-- content here -->
-					<Seat seatPosition={`${rowLetter}${rowSeat}`} />
+
+					<Seat
+						onClick={() => addOrRemove(`${rowLetter}${rowSeat}`)}
+						seatPosition={`${rowLetter}${rowSeat}`}
+					/>
 				{/each}
 
 				<div class="block"></div>
 
 				{#each [7, 8, 9] as rowSeat}
 					<!-- content here -->
-					<Seat seatPosition={`${rowLetter}${rowSeat}`} />
+
+					<Seat
+						onClick={() => addOrRemove(`${rowLetter}${rowSeat}`)}
+						seatPosition={`${rowLetter}${rowSeat}`}
+					/>
 				{/each}
 			</tr>
 		{/each}
