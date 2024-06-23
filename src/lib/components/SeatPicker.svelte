@@ -4,7 +4,7 @@
 	export let seats: string[];
 </script>
 
-<table class="seats">
+<table id="seat-table">
 	<tbody>
 		{#each ['A', 'B', 'C', 'D'] as rowLetter}
 			<tr>
@@ -34,8 +34,8 @@
 </table>
 
 <style lang="scss">
-	.seats {
-		overflow: scroll;
+	#seat-table {
+		width: 100%;
 	}
 
 	.block {

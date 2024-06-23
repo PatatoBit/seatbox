@@ -8,10 +8,10 @@
 		email: auth.currentUser?.email
 	};
 
-	let selectedSeats: string[] = ['A1', 'A2'];
+	let selectedSeats: string[] = [];
 </script>
 
-<div class="container">
+<main class="container">
 	<div class="main-view">
 		<h2>เริ่มเปิดจองโต๊ะใน</h2>
 		<h1>31 ชั่มโมง 17 นาที 20 วินาที</h1>
@@ -35,42 +35,26 @@
 
 		<div class="main-picker">
 			<div class="seats">
-				<h3>{selectedSeats.toString()}</h3>
 				<SeatPicker bind:seats={selectedSeats} />
 			</div>
-
-			<!-- <div class="order-card">
-				<div class="order-row">
-					<div id="order-seat">
-						<h3>จองล่วงหน้า</h3>
-						<h2 class="order-text">{selectedSeats}</h2>
-					</div>
-
-					<div id="order-cost">
-						<h3>ค่าจองล่วงหน้า</h3>
-						<h2 class="order-text">฿{selectedSeats?.length * 5}</h2>
-					</div>
-
-					<button>จองที่</button>
-				</div>
-			</div> -->
 		</div>
 	</div>
 
 	<br />
 
 	<button class="primary" on:click={signOut}>ลงชื่อออก</button>
-</div>
+</main>
 
 <style lang="scss">
 	.container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		max-width: 100%;
+		width: 100%;
 		min-height: 100vh;
 
 		padding-top: 5rem;
+		padding: 2rem;
 	}
 
 	#class-screen {
@@ -84,12 +68,9 @@
 		flex-direction: column;
 		align-items: center;
 		flex-wrap: wrap;
-	}
 
-	.main-picker {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+		width: 100%;
+		max-width: 800px;
 	}
 
 	.details {
@@ -108,51 +89,14 @@
 			align-items: flex-end;
 		}
 	}
+	.main-picker {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
 	.seats {
-		flex: 2;
-		min-width: 25rem;
-	}
-
-	.order-card {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-
-		padding: 1.5em;
-		background-color: #f0f0f0;
-
-		.order-row {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: space-between;
-			width: 100%;
-
-			text-align: center;
-		}
-
-		@media screen and (max-width: 600px) {
-			.order-row {
-				flex-direction: row;
-			}
-
-			#order-seat {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-start;
-			}
-
-			#order-cost {
-				display: flex;
-				flex-direction: column;
-				align-items: flex-end;
-			}
-		}
-	}
-
-	.order-text {
-		font-size: 2em;
+		width: 100%;
+		object-fit: scale;
 	}
 </style>

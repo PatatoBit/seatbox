@@ -22,7 +22,6 @@
 			<img src="/icons/selectedCheck.svg" alt="Seat {seatPosition} Selected" />
 		{:else}
 			<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
-			<!-- else content here -->
 		{/if}
 	</button>
 </td>
@@ -32,8 +31,9 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 50px;
-		height: 50px;
+		width: 100%;
+
+		aspect-ratio: 1/1;
 		border-radius: 0.3rem;
 		cursor: pointer;
 
