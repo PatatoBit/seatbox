@@ -8,7 +8,7 @@
 
 	<br />
 
-	<button on:click={signInWithGoogle}>ล็อกอิน</button>
+	<button class="primary" on:click={signInWithGoogle}>ล็อกอิน</button>
 </main>
 
 <style lang="scss">

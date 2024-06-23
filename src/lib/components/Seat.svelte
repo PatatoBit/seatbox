@@ -4,9 +4,9 @@
 </script>
 
 <td>
-	<div class="seat" on:click={onClick}>
+	<button class="seat" on:click={onClick}>
 		<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
-	</div>
+	</button>
 </td>
 
 <style lang="scss">
@@ -28,5 +28,9 @@
 		&:hover {
 			transform: scale(1.1);
 		}
+	}
+
+	button {
+		all: unset;
 	}
 </style>

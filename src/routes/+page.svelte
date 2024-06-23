@@ -58,7 +58,7 @@
 
 	<br />
 
-	<button on:click={signOut}>ลงชื่อออก</button>
+	<button class="primary" on:click={signOut}>ลงชื่อออก</button>
 </div>
 
 <style lang="scss">
