@@ -5,8 +5,11 @@
 	function addOrRemove(seat: string) {
 		if (seats.includes(seat)) {
 			seats = seats.filter((s) => s !== seat);
+
+			console.log('Seat already in, removing');
 		} else {
-			seats = [...seats, seat];
+			seats.push(seat);
+			seats = seats;
 		}
 
 		console.log(seats);

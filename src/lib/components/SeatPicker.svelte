@@ -10,7 +10,7 @@
 			<tr>
 				{#each [1, 2, 3] as rowSeat}
 					<!-- content here -->
-					<Seat {seats} seatPosition={`${rowLetter}${rowSeat}`} />
+					<Seat bind:seats seatPosition={`${rowLetter}${rowSeat}`} />
 				{/each}
 
 				<div class="block"></div>
@@ -18,7 +18,7 @@
 				{#each [4, 5, 6] as rowSeat}
 					<!-- content here -->
 
-					<Seat {seats} seatPosition={`${rowLetter}${rowSeat}`} />
+					<Seat bind:seats seatPosition={`${rowLetter}${rowSeat}`} />
 				{/each}
 
 				<div class="block"></div>
@@ -26,7 +26,7 @@
 				{#each [7, 8, 9] as rowSeat}
 					<!-- content here -->
 
-					<Seat {seats} seatPosition={`${rowLetter}${rowSeat}`} />
+					<Seat bind:seats seatPosition={`${rowLetter}${rowSeat}`} />
 				{/each}
 			</tr>
 		{/each}
