@@ -14,7 +14,7 @@
 <main class="container">
 	<div class="main-view">
 		<h2>เริ่มเปิดจองโต๊ะใน</h2>
-		<h1>31 ชั่มโมง 17 นาที 20 วินาที</h1>
+		<h1>31 ชั่วโมง 17 นาที 20 วินาที</h1>
 
 		<div class="details">
 			<div>12/6/24 - 17/6/24</div>

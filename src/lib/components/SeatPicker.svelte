@@ -40,7 +40,7 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
-
 		justify-content: center;
+		height: auto;
 	}
 </style>

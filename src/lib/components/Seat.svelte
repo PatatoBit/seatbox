@@ -16,24 +16,42 @@
 	}
 </script>
 
-<button class="seat" on:click={() => addOrRemove(seatPosition)}>
-	{#if seats.includes(seatPosition)}
-		<img src="/icons/selectedCheck.svg" alt="Seat {seatPosition} Selected" />
-	{:else}
-		<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
-	{/if}
-</button>
+{#if seats.includes(seatPosition)}
+	<button class="seat" on:click={() => addOrRemove(seatPosition)}>
+		<div id="img">
+			<img src="/icons/selectedCheck.png" alt="Seat {seatPosition} Selected" />
+		</div>
+	</button>
+{:else}
+	<button class="seat" on:click={() => addOrRemove(seatPosition)}>
+		<div id="img">
+			<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
+		</div>
+	</button>
+{/if}
 
 <style lang="scss">
 	.seat {
 		all: unset;
 		aspect-ratio: 1/1;
-		padding: 0.5rem;
 		cursor: pointer;
+		padding: 0.5rem;
 
-		img {
-			width: 100%;
-			height: 100%;
+		width: 50px;
+		height: 50px;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex: 1 auto;
+
+		#img {
+			display: flex;
+			img {
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 </style>
