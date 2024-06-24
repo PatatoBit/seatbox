@@ -21,10 +21,8 @@
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
-		min-width: 0;
-		overflow: hidden;
 
-		padding: 2rem;
+		padding: 1.5rem;
 
 		background-color: #f5f5f5;
 
@@ -33,10 +31,6 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-
-			overflow-wrap: break-word;
-			text-wrap: wrap;
-			max-width: 5rem;
 
 			h3 {
 				font-size: 1.5rem;
