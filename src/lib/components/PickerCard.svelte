@@ -41,4 +41,9 @@
 			}
 		}
 	}
+
+	button {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
 </style>

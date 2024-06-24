@@ -66,7 +66,7 @@
 		min-height: 100vh;
 
 		padding-top: 5rem;
-		padding: 2rem;
+		padding: 1.5rem;
 	}
 
 	.main-view {

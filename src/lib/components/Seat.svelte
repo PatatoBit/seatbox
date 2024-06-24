@@ -13,19 +13,17 @@
 	}
 </script>
 
-{#if seats.includes(seatPosition)}
-	<button class="seat" on:click={() => addOrRemove(seatPosition)}>
+<button class="seat" on:click={() => addOrRemove(seatPosition)}>
+	{#if seats.includes(seatPosition)}
 		<div id="img">
 			<img src="/icons/selectedCheck.png" alt="Seat {seatPosition} Selected" />
 		</div>
-	</button>
-{:else}
-	<button class="seat" on:click={() => addOrRemove(seatPosition)}>
+	{:else}
 		<div id="img">
 			<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
 		</div>
-	</button>
-{/if}
+	{/if}
+</button>
 
 <style lang="scss">
 	.seat {
