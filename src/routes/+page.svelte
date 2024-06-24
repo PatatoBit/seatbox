@@ -93,6 +93,8 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		width: 100%;
+		overflow: scroll;
 	}
 
 	.seats {
