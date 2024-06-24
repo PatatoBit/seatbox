@@ -5,50 +5,48 @@
 	function addOrRemove(seat: string) {
 		if (seats.includes(seat)) {
 			seats = seats.filter((s) => s !== seat);
-
-			console.log('Seat already in, removing');
 		} else {
+			if (seats.length > 0) return;
 			seats.push(seat);
 			seats = seats;
 		}
-
-		console.log(seats);
 	}
 </script>
 
-<td>
-	<button class="seat" on:click={() => addOrRemove(seatPosition)}>
-		{#if seats.includes(seatPosition)}
-			<img src="/icons/selectedCheck.svg" alt="Seat {seatPosition} Selected" />
-		{:else}
+<button class="seat" on:click={() => addOrRemove(seatPosition)}>
+	{#if seats.includes(seatPosition)}
+		<div id="img">
+			<img src="/icons/selectedCheck.png" alt="Seat {seatPosition} Selected" />
+		</div>
+	{:else}
+		<div id="img">
 			<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
-		{/if}
-	</button>
-</td>
+		</div>
+	{/if}
+</button>
 
 <style lang="scss">
 	.seat {
+		all: unset;
+		aspect-ratio: 1/1;
+		cursor: pointer;
+		padding: 0.5rem;
+
+		width: 50px;
+		height: 50px;
+
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		width: 100%;
+		flex: 1 auto;
 
-		aspect-ratio: 1/1;
-		border-radius: 0.3rem;
-		cursor: pointer;
-
-		img {
-			height: 100%;
-			width: 100%;
-			object-fit: cover;
+		#img {
+			display: flex;
+			img {
+				width: 100%;
+				height: 100%;
+			}
 		}
-
-		&:hover {
-			transform: scale(1.1);
-		}
-	}
-
-	button {
-		all: unset;
 	}
 </style>

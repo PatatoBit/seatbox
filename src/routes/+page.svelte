@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { signOut } from '$lib/auth';
+	import PickerCard from '$lib/components/PickerCard.svelte';
 	import SeatPicker from '$lib/components/SeatPicker.svelte';
 	import { auth } from '$lib/firebase';
 
@@ -14,7 +15,12 @@
 <main class="container">
 	<div class="main-view">
 		<h2>เริ่มเปิดจองโต๊ะใน</h2>
-		<h1>31 ชั่มโมง 17 นาที 20 วินาที</h1>
+
+		<div class="countdown">
+			<h1>31 ชั่วโมง</h1>
+			<h1>17 นาที</h1>
+			<h1>20 วินาที</h1>
+		</div>
 
 		<div class="details">
 			<div>12/6/24 - 17/6/24</div>
@@ -29,23 +35,29 @@
 			</div>
 		</div>
 
-		<hr id="class-screen" />
-
-		<h3 style="color: #71aaff; margin-top: 0.5rem">หน้าห้อง</h3>
-
 		<div class="main-picker">
-			<div class="seats">
-				<SeatPicker bind:seats={selectedSeats} />
-			</div>
+			<SeatPicker bind:seats={selectedSeats} />
+
+			<PickerCard bind:selectedSeats />
 		</div>
 	</div>
 
 	<br />
 
-	<button class="primary" on:click={signOut}>ลงชื่อออก</button>
+	<button class="secondary" on:click={signOut}>ลงชื่อออก</button>
 </main>
 
 <style lang="scss">
+	.countdown {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		text-align: center;
+	}
+
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -54,13 +66,7 @@
 		min-height: 100vh;
 
 		padding-top: 5rem;
-		padding: 2rem;
-	}
-
-	#class-screen {
-		width: 100%;
-		height: 0;
-		border: 1px solid #71aaff;
+		padding: 1.5rem;
 	}
 
 	.main-view {
@@ -70,7 +76,7 @@
 		flex-wrap: wrap;
 
 		width: 100%;
-		max-width: 800px;
+		max-width: 1000px;
 	}
 
 	.details {
@@ -78,6 +84,8 @@
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: flex-end;
+		flex-wrap: wrap;
+		gap: 1rem;
 		width: 100%;
 
 		margin-top: 3rem;
@@ -93,10 +101,9 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-	}
-
-	.seats {
+		flex-wrap: wrap;
 		width: 100%;
-		object-fit: scale;
+
+		gap: 2rem;
 	}
 </style>

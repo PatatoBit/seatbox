@@ -51,11 +51,6 @@ p {
 
 button {
 	font-family: 'sa-ard', sans-serif;
-}
-
-.primary {
-	background-color: $primary;
-	color: $softWhite;
 
 	font-weight: 500;
 	font-size: 18px;
@@ -64,10 +59,10 @@ button {
 	border-width: 0;
 	border-radius: 0.5em;
 
-	box-shadow: 0 0.35em 0 #223080;
+	cursor: pointer;
 
 	&:hover {
-		box-shadow: 0 0.2em 0 #223080;
+		box-shadow: 0 0.2em 0;
 		transform: translateY(0.2em);
 		cursor: pointer;
 	}
@@ -78,8 +73,17 @@ button {
 	}
 }
 
+.primary {
+	background-color: $primary;
+	color: $softWhite;
+
+	box-shadow: 0 0.35em 0 #223080;
+}
+
 .secondary {
 	background-color: $softWhite;
 	border: 2px solid $secondary;
 	color: $secondary;
+
+	box-shadow: 0 0.35em 0 $secondary;
 }
