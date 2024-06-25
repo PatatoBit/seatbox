@@ -10,7 +10,8 @@
 		nextSunday.setHours(9, 0, 0, 0); // set to 9:00 AM
 
 		// If today is Sunday and it's past 9:00 AM, set to the next Sunday
-		if (now.getDay() === 0 && now.getHours() >= 9) {
+
+		if (nextSunday <= now) {
 			nextSunday.setDate(nextSunday.getDate() + 7);
 		}
 
@@ -22,7 +23,7 @@
 		const nextSunday = getNextSundayAtNine();
 		const timeDiff = nextSunday.getTime() - now.getTime();
 
-		const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const hours = Math.floor(timeDiff / (1000 * 60 * 60));
 		const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
 		const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
