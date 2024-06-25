@@ -4,6 +4,8 @@
 	import PickerCard from '$lib/components/PickerCard.svelte';
 	import SeatPicker from '$lib/components/SeatPicker.svelte';
 	import { auth } from '$lib/firebase';
+	import { dateRange, getDateRange } from '$lib/time';
+	import { onMount } from 'svelte';
 
 	const userData = {
 		name: auth.currentUser?.displayName,
@@ -11,6 +13,16 @@
 	};
 
 	let selectedSeats: string[] = [];
+
+	onMount(() => {
+		getDateRange();
+		// Optionally update the range every minute in case the time passes 18:00 on Friday
+		const interval = setInterval(getDateRange, 60000);
+		return () => clearInterval(interval);
+	});
+
+	$: start = $dateRange.start;
+	$: end = $dateRange.end;
 </script>
 
 <main class="container">
@@ -22,7 +34,7 @@
 		</div>
 
 		<div class="details">
-			<div>12/6/24 - 17/6/24</div>
+			<div>{start} - {end}</div>
 
 			<div id="user-details">
 				{#if userData}
