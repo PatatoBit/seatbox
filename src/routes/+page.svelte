@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { signOut } from '$lib/auth';
+	import Countdown from '$lib/components/Countdown.svelte';
 	import PickerCard from '$lib/components/PickerCard.svelte';
 	import SeatPicker from '$lib/components/SeatPicker.svelte';
 	import { auth } from '$lib/firebase';
@@ -17,9 +18,7 @@
 		<h2>เริ่มเปิดจองโต๊ะใน</h2>
 
 		<div class="countdown">
-			<h1>31 ชั่วโมง</h1>
-			<h1>17 นาที</h1>
-			<h1>20 วินาที</h1>
+			<Countdown />
 		</div>
 
 		<div class="details">
