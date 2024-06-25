@@ -25,6 +25,7 @@
 		padding: 1.5rem;
 
 		background-color: #f5f5f5;
+		border: 1px dashed #212121;
 
 		.order-details {
 			display: flex;
