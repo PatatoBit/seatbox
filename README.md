@@ -1,9 +1,14 @@
 # todo
 - fix mobile layout
 - main feature
-  - ~~countdown~~
-  - date range
+  - lock booking when weekday starts
+  - randomize leftovers
   - auto reset when weekend ends
+  - booking
+    - payment when before time
+    - saving to firestore after success
+  - ~~countdown~~
+  - ~~date range~~
 - stripe payment
 - ticket printing
 - countdown change to time left to book when booking are open
