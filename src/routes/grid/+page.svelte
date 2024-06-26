@@ -49,15 +49,17 @@
 		min-height: 100vh;
 
 		padding-top: 5rem;
-		padding: 1.5rem;
+		padding: 1rem;
 	}
 
 	.seats {
 		width: 100%;
+		max-width: 30rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		gap: 0.5rem;
 	}
 
 	.seat-row {
@@ -66,18 +68,28 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-
-		gap: 50rem;
 		flex-shrink: 1;
 	}
 
 	.seat-pack {
 		display: flex;
-		justify-content: space-between;
-		flex: 1 1 0px;
+		flex: 1 1 auto;
+		justify-content: center;
+		gap: 0.5rem;
+
+		div {
+			width: 2rem;
+			height: 2rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 1px solid #000;
+			border-radius: 0.5rem;
+			cursor: pointer;
+		}
 	}
 
 	.extra {
-		gap: 1rem;
+		gap: 0.5rem;
 	}
 </style>
