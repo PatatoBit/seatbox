@@ -34,3 +34,8 @@ export function getDateRange() {
 
 	dateRange.set({ start: formatDate(monday), end: formatDate(friday) });
 }
+
+export function isWeekday() {
+	const dayOfWeek = new Date().getDay();
+	return dayOfWeek > 0 && dayOfWeek < 6;
+}

@@ -6,6 +6,7 @@
 	import { auth } from '$lib/firebase';
 	import { dateRange, getDateRange } from '$lib/time';
 	import { onMount } from 'svelte';
+	import { isWeekday } from '$lib/time';
 
 	const userData = {
 		name: auth.currentUser?.displayName,
@@ -46,11 +47,16 @@
 			</div>
 		</div>
 
-		<div class="main-picker">
-			<SeatPicker bind:seats={selectedSeats} />
-
-			<PickerCard bind:selectedSeats />
-		</div>
+		{#if isWeekday()}
+			<div class="main-picker">
+				<SeatPicker seats={selectedSeats} />
+			</div>
+		{:else}
+			<div class="main-picker">
+				<SeatPicker bind:seats={selectedSeats} />
+				<!-- <PickerCard bind:selectedSeats /> -->
+			</div>
+		{/if}
 	</div>
 
 	<br />
@@ -108,6 +114,7 @@
 			align-items: flex-end;
 		}
 	}
+
 	.main-picker {
 		display: flex;
 		flex-direction: row;

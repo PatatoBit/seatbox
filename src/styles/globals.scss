@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @font-face {
 	font-family: 'sa-ard';
 	src: url('/fonts/sa-ard.otf') format('opentype');
@@ -19,7 +21,7 @@ $softGrey: #b4b4b4;
 
 html,
 body {
-	font-family: 'sa-ard', sans-serif;
+	font-family: 'IBM Plex Sans Thai', 'Noto Sans Thai Looped', sans-serif;
 	font-weight: 400;
 	font-size: 16px;
 
@@ -50,7 +52,7 @@ p {
 }
 
 button {
-	font-family: 'sa-ard', sans-serif;
+	font-family: 'IBM Plex Sans Thai', 'Noto Sans Thai Looped', sans-serif;
 
 	font-weight: 500;
 	font-size: 18px;

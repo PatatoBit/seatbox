@@ -1,14 +1,12 @@
 <script lang="ts">
 	import Seat from './Seat.svelte';
-
 	export let seats: string[];
 </script>
 
 <div class="class">
+	<h3 style="color: #71aaff; margin-top: 0.5rem; text-align: center">หน้าห้อง</h3>
+	<hr id="class-screen" />
 	<div class="seats">
-		<h3 style="color: #71aaff; margin-top: 0.5rem; text-align: center">หน้าห้อง</h3>
-		<hr id="class-screen" />
-
 		<br />
 		{#each ['A', 'B', 'C', 'D'] as rowLetter}
 			<div class="seat-row">
@@ -32,6 +30,14 @@
 				</div>
 			</div>
 		{/each}
+
+		<div class="seat-row">
+			<div class="seat-pack">
+				{#each [1, 2, 3, 4] as rowSeat}
+					<Seat bind:seats seatPosition={`E${rowSeat}`} />
+				{/each}
+			</div>
+		</div>
 	</div>
 </div>
 
