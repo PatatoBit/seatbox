@@ -5,12 +5,14 @@
 	src: url('/fonts/sa-ard.otf') format('opentype');
 }
 
-$primary: #3362a8;
-$secondary: #ff8c22;
+$primary: #5a5c9a;
+$secondary: #299956;
 $accent: #71aaff;
-$softBlack: #212121;
-$softWhite: #fefefe;
+$softBlack: #262525;
+$softWhite: #f2f2f2;
+$offWhite: #f1e8df;
 $softGrey: #b4b4b4;
+
 *,
 *::before,
 *::after {
@@ -25,7 +27,7 @@ body {
 	font-weight: 400;
 	font-size: 16px;
 
-	background-color: $softWhite;
+	background-color: $offWhite;
 	color: $softBlack;
 
 	overflow-x: hidden;

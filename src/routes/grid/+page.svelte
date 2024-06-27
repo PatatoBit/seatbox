@@ -73,8 +73,9 @@
 
 	.seat-pack {
 		display: flex;
-		flex: 1 1 auto;
 		justify-content: center;
+		flex: 1 1 auto;
+		flex-shrink: 1;
 		gap: 0.5rem;
 
 		div {
