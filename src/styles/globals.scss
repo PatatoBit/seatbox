@@ -5,8 +5,8 @@
 	src: url('/fonts/sa-ard.otf') format('opentype');
 }
 
-$primary: #5a5c9a;
-$secondary: #299956;
+$primary: #299956;
+$secondary: #5a5c9a;
 $accent: #71aaff;
 $softBlack: #262525;
 $softWhite: #f2f2f2;
@@ -66,7 +66,7 @@ button {
 
 	padding: 0.5em 2em;
 	border-width: 0;
-	border-radius: 0.5em;
+	border-radius: 10em;
 
 	cursor: pointer;
 
@@ -86,7 +86,7 @@ button {
 	background-color: $primary;
 	color: $softWhite;
 
-	box-shadow: 0 0.35em 0 #223080;
+	box-shadow: 0 0.35em 0 #12725b;
 }
 
 .secondary {

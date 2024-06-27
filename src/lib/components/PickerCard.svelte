@@ -16,15 +16,16 @@
 
 <style lang="scss">
 	.card {
-		position: absolute;
-		right: -14rem;
 		display: flex;
-		flex: 1 1 auto;
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
 
-		padding: 1.5rem;
+		flex: 1 1 auto;
+		position: absolute;
+		right: -14rem;
+		padding: 1rem;
+		width: 12rem;
 
 		background-color: #f5f5f5;
 
@@ -33,10 +34,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-
-			h3 {
-				font-size: 1.5rem;
-			}
+			margin-top: 2rem;
 
 			h2 {
 				font-size: 2rem;
@@ -47,5 +45,6 @@
 	button {
 		margin-top: 2rem;
 		margin-bottom: 1rem;
+		width: 100%;
 	}
 </style>
