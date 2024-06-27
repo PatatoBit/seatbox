@@ -8,8 +8,8 @@
 	import { signOut } from '$lib/auth';
 
 	import { page } from '$app/stores';
-	let cancelled = $page.url.searchParams.get('cancelled');
-	let success = $page.url.searchParams.get('success');
+	let cancelled = $page.url.searchParams.has('cancelled');
+	let success = $page.url.searchParams.has('success');
 
 	const userData = {
 		name: auth.currentUser?.displayName,
@@ -68,12 +68,12 @@
 	<br />
 
 	<h2>
-		{#if success}
-			Success
-		{:else if cancelled}
-			Cancelled
-		{:else}
-			Others
+		{#if success || cancelled}
+			{#if success}
+				Success!
+			{:else}
+				why tf did you cancel
+			{/if}
 		{/if}
 	</h2>
 
