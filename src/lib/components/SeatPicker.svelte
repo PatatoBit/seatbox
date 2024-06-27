@@ -60,7 +60,6 @@
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
-		min-height: 100vh;
 	}
 
 	.seats {
@@ -89,22 +88,13 @@
 		gap: 0.5rem;
 
 		div {
-			width: 5rem;
-			height: 5rem;
+			width: 3rem;
+			height: 3rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			border-radius: 0.5rem;
 			cursor: pointer;
-		}
-	}
-
-	@media only screen and (max-width: 960px) {
-		.seat-pack {
-			div {
-				width: 3rem;
-				height: 3rem;
-			}
 		}
 	}
 

@@ -28,7 +28,9 @@
 
 <main class="container">
 	<div class="main-view">
-		<h2>เริ่มเปิดจองโต๊ะใน</h2>
+		<div class="chip">
+			<h3 class="fancy">เริ่มเปิดจองโต๊ะใน</h3>
+		</div>
 
 		<div class="countdown">
 			<Countdown />
@@ -50,11 +52,13 @@
 		{#if isWeekday()}
 			<div class="main-picker">
 				<SeatPicker seats={selectedSeats} />
+				<PickerCard bind:selectedSeats />
 			</div>
 		{:else}
 			<div class="main-picker">
 				<SeatPicker bind:seats={selectedSeats} />
-				<!-- <PickerCard bind:selectedSeats /> -->
+
+				<PickerCard bind:selectedSeats />
 			</div>
 		{/if}
 	</div>
@@ -65,6 +69,14 @@
 </main>
 
 <style lang="scss">
+	.chip {
+		background-color: #da5353;
+		color: white;
+		padding: 0.5rem 2rem;
+		margin: 1rem 0;
+		border-radius: 10rem;
+	}
+
 	.countdown {
 		display: flex;
 		flex-direction: row;
@@ -93,7 +105,7 @@
 		flex-wrap: wrap;
 
 		width: 100%;
-		max-width: 1000px;
+		max-width: 40rem;
 	}
 
 	.details {
@@ -116,6 +128,7 @@
 	}
 
 	.main-picker {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;

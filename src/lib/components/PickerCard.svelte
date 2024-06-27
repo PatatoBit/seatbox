@@ -16,6 +16,8 @@
 
 <style lang="scss">
 	.card {
+		position: absolute;
+		right: -14rem;
 		display: flex;
 		flex: 1 1 auto;
 		flex-direction: column;
