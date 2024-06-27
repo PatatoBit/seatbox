@@ -34,7 +34,7 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			margin-top: 2rem;
+			margin-top: 1rem;
 
 			h2 {
 				font-size: 2rem;
@@ -44,7 +44,7 @@
 
 	button {
 		margin-top: 2rem;
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 		width: 100%;
 	}
 </style>
