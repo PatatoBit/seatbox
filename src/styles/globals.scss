@@ -64,7 +64,7 @@ button {
 	font-weight: 500;
 	font-size: 18px;
 
-	padding: 0.5em 2em;
+	padding: 0.4em 2em;
 	border-width: 0;
 	border-radius: 10em;
 
@@ -72,13 +72,12 @@ button {
 
 	&:hover {
 		box-shadow: 0 0.2em 0;
-		transform: translateY(0.2em);
-		cursor: pointer;
+		transform: translateY(0.1em);
 	}
 
 	&:active {
-		box-shadow: none;
-		transform: translateY(0.35em);
+		box-shadow: 0 0.2em 0;
+		transform: translateY(0.2em);
 	}
 }
 
