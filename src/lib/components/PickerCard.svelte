@@ -4,10 +4,10 @@
 
 <div class="card">
 	<div class="order-details">
-		<h3>ที่นั่ง</h3>
+		<p>ที่นั่ง</p>
 		<h2>{seats.length ? seats.toString() : '-'}</h2>
 
-		<h3>ค่าจองล่วงหน้า</h3>
+		<p>ค่าจองล่วงหน้า</p>
 		<h2>฿{seats.length * 5}</h2>
 	</div>
 
@@ -27,7 +27,6 @@
 		padding: 1.5rem;
 
 		background-color: #f5f5f5;
-		border: 1px dashed #212121;
 
 		.order-details {
 			display: flex;
