@@ -1,12 +1,15 @@
 <script lang="ts">
-	import { signOut } from '$lib/auth';
+	import { onMount } from 'svelte';
+	import { auth } from '$lib/firebase';
 	import Countdown from '$lib/components/Countdown.svelte';
 	import PickerCard from '$lib/components/PickerCard.svelte';
 	import SeatPicker from '$lib/components/SeatPicker.svelte';
-	import { auth } from '$lib/firebase';
-	import { dateRange, getDateRange } from '$lib/time';
-	import { onMount } from 'svelte';
-	import { isWeekday } from '$lib/time';
+	import { dateRange, getDateRange, isWeekday } from '$lib/time';
+	import { signOut } from '$lib/auth';
+
+	import { page } from '$app/stores';
+	let cancelled = $page.url.searchParams.get('cancelled');
+	let success = $page.url.searchParams.get('success');
 
 	const userData = {
 		name: auth.currentUser?.displayName,
@@ -63,6 +66,16 @@
 	</div>
 
 	<br />
+
+	<h2>
+		{#if success}
+			Success
+		{:else if cancelled}
+			Cancelled
+		{:else}
+			Others
+		{/if}
+	</h2>
 
 	<button class="secondary" on:click={signOut}>ลงชื่อออก</button>
 </main>

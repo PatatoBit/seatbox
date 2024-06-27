@@ -15,9 +15,9 @@
 		</div>
 	</div>
 
-	<div id="button-container">
+	<form id="button-container" action="?/checkout" method="post">
 		<button class="primary">จอง</button>
-	</div>
+	</form>
 </div>
 
 <style lang="scss">

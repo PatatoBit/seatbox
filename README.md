@@ -1,8 +1,8 @@
 # todo
-- fix mobile layout
+- ~~fix mobile layout~~
 - main feature
   - seat displayer
-    - 4 more seats
+    - ~~4 more seats~~
     - seat owner display
   - lock booking when weekday starts
   - randomize leftovers
