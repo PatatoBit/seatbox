@@ -16,11 +16,11 @@
 <button class="seat" on:click={() => addOrRemove(seatPosition)}>
 	{#if seats.includes(seatPosition)}
 		<div id="img">
-			<img src="/icons/selectedCheck.png" alt="Seat {seatPosition} Selected" />
+			<img src="/icons/selectedCheck.svg" alt="Seat {seatPosition} Selected" />
 		</div>
 	{:else}
 		<div id="img">
-			<img src="/icons/seatIcon.png" alt="Seat {seatPosition}" />
+			<img src="/icons/chair.svg" alt="Seat {seatPosition}" />
 		</div>
 	{/if}
 </button>
@@ -30,10 +30,6 @@
 		all: unset;
 		aspect-ratio: 1/1;
 		cursor: pointer;
-		padding: 0.5rem;
-
-		width: 50px;
-		height: 50px;
 
 		display: flex;
 		flex-direction: column;

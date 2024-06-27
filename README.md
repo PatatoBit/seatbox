@@ -1,8 +1,18 @@
 # todo
-- fix mobile layout
+- ~~fix mobile layout~~
 - main feature
-  - countdown
-  - date
+  - seat displayer
+    - ~~4 more seats~~
+    - seat owner display
+  - lock booking when weekday starts
+  - randomize leftovers
   - auto reset when weekend ends
+  - booking
+    - payment when before time
+    - saving to firestore after success
+  - querying seat data
+  - ~~countdown~~
+  - ~~date range~~
 - stripe payment
 - ticket printing
+- countdown change to time left to book when booking are open

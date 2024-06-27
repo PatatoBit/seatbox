@@ -1,8 +1,15 @@
 <script lang="ts">
-	import { signOut } from '$lib/auth';
+	import { onMount } from 'svelte';
+	import { auth } from '$lib/firebase';
+	import Countdown from '$lib/components/Countdown.svelte';
 	import PickerCard from '$lib/components/PickerCard.svelte';
 	import SeatPicker from '$lib/components/SeatPicker.svelte';
-	import { auth } from '$lib/firebase';
+	import { dateRange, getDateRange, isWeekday } from '$lib/time';
+	import { signOut } from '$lib/auth';
+
+	import { page } from '$app/stores';
+	let cancelled = $page.url.searchParams.has('cancelled');
+	let success = $page.url.searchParams.has('success');
 
 	const userData = {
 		name: auth.currentUser?.displayName,
@@ -10,20 +17,30 @@
 	};
 
 	let selectedSeats: string[] = [];
+
+	onMount(() => {
+		getDateRange();
+		// Optionally update the range every minute in case the time passes 18:00 on Friday
+		const interval = setInterval(getDateRange, 60000);
+		return () => clearInterval(interval);
+	});
+
+	$: start = $dateRange.start;
+	$: end = $dateRange.end;
 </script>
 
 <main class="container">
 	<div class="main-view">
-		<h2>เริ่มเปิดจองโต๊ะใน</h2>
+		<div class="chip">
+			<h3 class="fancy">เริ่มเปิดจองโต๊ะใน</h3>
+		</div>
 
 		<div class="countdown">
-			<h1>31 ชั่วโมง</h1>
-			<h1>17 นาที</h1>
-			<h1>20 วินาที</h1>
+			<Countdown />
 		</div>
 
 		<div class="details">
-			<div>12/6/24 - 17/6/24</div>
+			<div>{start} - {end}</div>
 
 			<div id="user-details">
 				{#if userData}
@@ -35,19 +52,43 @@
 			</div>
 		</div>
 
-		<div class="main-picker">
-			<SeatPicker bind:seats={selectedSeats} />
-
-			<PickerCard bind:selectedSeats />
-		</div>
+		{#if isWeekday()}
+			<div class="main-picker">
+				<SeatPicker bind:seats={selectedSeats} />
+				<PickerCard bind:seats={selectedSeats} />
+			</div>
+		{:else}
+			<div class="main-picker">
+				<SeatPicker bind:seats={selectedSeats} />
+				<PickerCard bind:seats={selectedSeats} />
+			</div>
+		{/if}
 	</div>
 
 	<br />
+
+	<h2>
+		{#if success || cancelled}
+			{#if success}
+				Success!
+			{:else}
+				why did you cancel
+			{/if}
+		{/if}
+	</h2>
 
 	<button class="secondary" on:click={signOut}>ลงชื่อออก</button>
 </main>
 
 <style lang="scss">
+	.chip {
+		background-color: #da5353;
+		color: white;
+		padding: 0.5rem 2rem;
+		margin: 1rem 0;
+		border-radius: 10rem;
+	}
+
 	.countdown {
 		display: flex;
 		flex-direction: row;
@@ -76,7 +117,7 @@
 		flex-wrap: wrap;
 
 		width: 100%;
-		max-width: 1000px;
+		max-width: 40rem;
 	}
 
 	.details {
@@ -97,7 +138,9 @@
 			align-items: flex-end;
 		}
 	}
+
 	.main-picker {
+		position: relative;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;

@@ -1,69 +1,60 @@
-<script lang="ts">
-	import Seat from './Seat.svelte';
-	export let seats: string[];
-</script>
-
-<div class="class">
-	<h3 style="color: #71aaff; margin-top: 0.5rem; text-align: center">หน้าห้อง</h3>
-	<hr id="class-screen" />
+<div class="container">
 	<div class="seats">
-		<br />
-		{#each ['A', 'B', 'C', 'D'] as rowLetter}
+		{#each ['A', 'B', 'C', 'D'] as row}
 			<div class="seat-row">
 				<div class="seat-pack">
-					{#each [1, 2, 3] as rowSeat}
+					{#each [1, 2, 3] as seat}
 						<div>
-							<Seat bind:seats seatPosition={`${rowLetter}${rowSeat}`} />
-							<!-- content here -->
+							{row}{seat}
 						</div>
 					{/each}
 				</div>
 
 				<div class="seat-pack">
-					{#each [4, 5, 6] as rowSeat}
+					{#each [4, 5, 6] as seat}
 						<div>
-							<Seat bind:seats seatPosition={`${rowLetter}${rowSeat}`} />
+							{row}{seat}
 						</div>
 					{/each}
 				</div>
 
 				<div class="seat-pack">
-					{#each [7, 8, 9] as rowSeat}
+					{#each [7, 8, 9] as seat}
 						<div>
-							<Seat bind:seats seatPosition={`${rowLetter}${rowSeat}`} />
+							{row}{seat}
 						</div>
 					{/each}
 				</div>
 			</div>
 		{/each}
 
-		<div class="seat-row">
+		{#each ['E'] as row}
 			<div class="seat-pack extra">
-				{#each [1, 2, 3, 4] as rowSeat}
+				{#each [1, 2, 3, 4] as seat}
 					<div>
-						<Seat bind:seats seatPosition={`E${rowSeat}`} />
+						{row}{seat}
 					</div>
 				{/each}
 			</div>
-		</div>
+		{/each}
 	</div>
 </div>
 
 <style lang="scss">
-	#class-screen {
-		width: 100%;
-		border: 1px solid #71aaff;
-	}
-
-	.class {
+	.container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		width: 100%;
+		min-height: 100vh;
+
+		padding-top: 5rem;
+		padding: 1rem;
 	}
 
 	.seats {
 		width: 100%;
+		max-width: 30rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -88,23 +79,14 @@
 		gap: 0.5rem;
 
 		div {
-			width: 3rem;
-			height: 3rem;
+			width: 2rem;
+			height: 2rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			border: 1px solid #000;
 			border-radius: 0.5rem;
 			cursor: pointer;
-		}
-	}
-
-	@media only screen and (max-width: 600px) {
-		.seat-pack {
-			gap: 0.05rem;
-			div {
-				width: 2rem;
-				height: 2rem;
-			}
 		}
 	}
 

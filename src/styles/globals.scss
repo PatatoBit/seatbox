@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @font-face {
 	font-family: 'sa-ard';
 	src: url('/fonts/sa-ard.otf') format('opentype');
 }
 
-$primary: #3362a8;
-$secondary: #ff8c22;
+$primary: #299956;
+$secondary: #5a5c9a;
 $accent: #71aaff;
-$softBlack: #212121;
-$softWhite: #fefefe;
+$softBlack: #262525;
+$softWhite: #f2f2f2;
+$offWhite: #f1e8df;
 $softGrey: #b4b4b4;
+
 *,
 *::before,
 *::after {
@@ -19,14 +23,19 @@ $softGrey: #b4b4b4;
 
 html,
 body {
-	font-family: 'sa-ard', sans-serif;
+	font-family: 'IBM Plex Sans Thai', 'Noto Sans Thai Looped', sans-serif;
 	font-weight: 400;
 	font-size: 16px;
 
-	background-color: $softWhite;
+	background-color: $offWhite;
 	color: $softBlack;
 
 	overflow-x: hidden;
+}
+
+.fancy {
+	font-family: 'Noto Sans Thai looped', sans-serif;
+	font-weight: 300;
 }
 
 h1 {
@@ -50,34 +59,34 @@ p {
 }
 
 button {
-	font-family: 'sa-ard', sans-serif;
+	font-family: 'IBM Plex Sans Thai', 'Noto Sans Thai Looped', sans-serif;
 
 	font-weight: 500;
 	font-size: 18px;
 
-	padding: 0.5em 2em;
+	padding: 0.4em 2em;
 	border-width: 0;
-	border-radius: 0.5em;
+	border-radius: 10em;
 
 	cursor: pointer;
 
 	&:hover {
 		box-shadow: 0 0.2em 0;
-		transform: translateY(0.2em);
-		cursor: pointer;
+		transform: translateY(0.1em);
 	}
 
 	&:active {
 		box-shadow: none;
-		transform: translateY(0.35em);
+		transform: translateY(0.2em);
 	}
 }
 
 .primary {
 	background-color: $primary;
+	border: 2px solid $primary;
 	color: $softWhite;
 
-	box-shadow: 0 0.35em 0 #223080;
+	box-shadow: 0 0.35em 0 #12725b;
 }
 
 .secondary {
