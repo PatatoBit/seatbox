@@ -11,7 +11,7 @@
 
 		<div>
 			<p>ค่าจองล่วงหน้า</p>
-			<h2>฿{seats.length * 5}</h2>
+			<h2>฿{seats.length * 10}</h2>
 		</div>
 	</div>
 
