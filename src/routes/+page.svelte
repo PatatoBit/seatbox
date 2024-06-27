@@ -72,7 +72,7 @@
 			{#if success}
 				Success!
 			{:else}
-				why tf did you cancel
+				why did you cancel
 			{/if}
 		{/if}
 	</h2>

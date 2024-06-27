@@ -18,6 +18,7 @@ export const actions: Actions = {
 					}
 				],
 				mode: 'payment',
+				payment_method_types: ['promptpay'],
 				success_url: `${request.headers.get('origin')}/?success`,
 				cancel_url: `${request.headers.get('origin')}/?cancelled`
 			});
