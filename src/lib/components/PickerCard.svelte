@@ -4,14 +4,20 @@
 
 <div class="card">
 	<div class="order-details">
-		<p>ที่นั่ง</p>
-		<h2>{seats.length ? seats.toString() : '-'}</h2>
+		<div>
+			<p>ที่นั่ง</p>
+			<h2>{seats.length ? seats.toString() : '-'}</h2>
+		</div>
 
-		<p>ค่าจองล่วงหน้า</p>
-		<h2>฿{seats.length * 5}</h2>
+		<div>
+			<p>ค่าจองล่วงหน้า</p>
+			<h2>฿{seats.length * 5}</h2>
+		</div>
 	</div>
 
-	<button class="primary">จอง</button>
+	<div id="button-container">
+		<button class="primary">จอง</button>
+	</div>
 </div>
 
 <style lang="scss">
@@ -36,6 +42,14 @@
 			align-items: center;
 			margin-top: 1rem;
 
+			div {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 1rem;
+			}
+
 			h2 {
 				font-size: 2rem;
 			}
@@ -46,5 +60,37 @@
 		margin-top: 2rem;
 		margin-bottom: 0.5rem;
 		width: 100%;
+	}
+
+	@media only screen and (max-width: 1100px) {
+		.card {
+			flex-direction: row;
+			position: inherit;
+			right: 0;
+
+			.order-details {
+				margin: 0;
+				flex: 6 1 auto;
+				flex-direction: row;
+				justify-content: space-around;
+
+				div {
+					margin: 0;
+				}
+			}
+
+			button {
+				flex: 1 1 auto;
+				width: min-content;
+			}
+
+			#button-container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+			}
+		}
 	}
 </style>

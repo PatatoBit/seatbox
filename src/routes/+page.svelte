@@ -52,13 +52,11 @@
 		{#if isWeekday()}
 			<div class="main-picker">
 				<SeatPicker bind:seats={selectedSeats} />
-
 				<PickerCard bind:seats={selectedSeats} />
 			</div>
 		{:else}
 			<div class="main-picker">
 				<SeatPicker bind:seats={selectedSeats} />
-
 				<PickerCard bind:seats={selectedSeats} />
 			</div>
 		{/if}

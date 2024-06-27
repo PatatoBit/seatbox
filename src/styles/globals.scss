@@ -76,13 +76,14 @@ button {
 	}
 
 	&:active {
-		box-shadow: 0 0.2em 0;
+		box-shadow: none;
 		transform: translateY(0.2em);
 	}
 }
 
 .primary {
 	background-color: $primary;
+	border: 2px solid $primary;
 	color: $softWhite;
 
 	box-shadow: 0 0.35em 0 #12725b;
