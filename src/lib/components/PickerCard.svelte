@@ -30,7 +30,11 @@
 
 	<form id="button-container" action="?/checkout" method="post">
 		<input type="hidden" name="seatBooking" bind:value={seats} />
-		<button class="primary" on:click={uploadBooking}>จอง</button>
+		<button
+			class={seats.length < 1 ? 'disabled' : 'primary'}
+			disabled={seats.length < 1}
+			on:click={uploadBooking}>จอง</button
+		>
 	</form>
 </div>
 
