@@ -32,7 +32,7 @@
 			createdAt: docSnap.data()?.createdAt
 		};
 
-		console.table(ticketData);
+		console.log(ticketData);
 	});
 </script>
 
@@ -45,6 +45,6 @@
 		<li>Name: {ticketData.name}</li>
 		<li>Email: {ticketData.email}</li>
 		<li>Seat: {ticketData.seat}</li>
-		<li>Booking Date: {ticketData.createdAt.toLocaleDateString}</li>
+		<li>Booking Date: {new Date(Number(ticketData.createdAt) * 1000).toLocaleTimeString()}</li>
 	</ul>
 {/if}
