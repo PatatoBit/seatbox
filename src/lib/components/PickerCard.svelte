@@ -16,7 +16,7 @@
 	</div>
 
 	<form id="button-container" action="?/checkout" method="post">
-		<input type="hidden" name="seatBooking" />
+		<input type="hidden" name="seatBooking" bind:value={seats} />
 		<button class="primary">จอง</button>
 	</form>
 </div>
