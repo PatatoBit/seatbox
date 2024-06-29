@@ -2,25 +2,17 @@ import { STRIPE_SECRET_KEY } from '$env/static/private';
 import Stripe from 'stripe';
 import { error, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { currentAuthUser, currentBooking } from '$lib/store';
-import type { User } from 'firebase/auth';
+import { currentBooking } from '$lib/store';
 
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 
 export const actions: Actions = {
-	checkout: async ({ request, url }) => {
+	checkout: async ({ request }) => {
 		let sessionUrl: string | null;
 
 		// get params
-		const seatBooking = url.searchParams.get('seatBooking');
-
-		let currentUser: User | null = null as User | null;
-
-		currentAuthUser.subscribe((user) => {
-			if (user) {
-				currentUser = user;
-			}
-		});
+		const formData = await request.formData();
+		const seatBooking = formData.get('seatBooking')?.toString() || '';
 
 		try {
 			const session = await stripe.checkout.sessions.create({
@@ -42,9 +34,10 @@ export const actions: Actions = {
 				session_id: session.id,
 				created: Date.now(),
 				status: 'pending',
-				seat: seatBooking ? seatBooking : 'No seat selected',
-				email: currentUser && currentUser.email ? currentUser.email : 'No auth user detected?'
+				seat: seatBooking ? seatBooking : ''
 			});
+
+			currentBooking.subscribe((booking) => console.log(booking));
 		} catch (err) {
 			console.error(err);
 			throw error(500, 'Stripe error');

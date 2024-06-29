@@ -31,7 +31,6 @@
 	}
 
 	onMount(() => {
-		console.log(getNextSundayAtNine().getDate());
 		updateTimeLeft();
 		const interval = setInterval(updateTimeLeft, 1000);
 		return () => clearInterval(interval);
