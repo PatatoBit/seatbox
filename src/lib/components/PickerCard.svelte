@@ -1,5 +1,18 @@
 <script lang="ts">
+	import { db } from '$lib/firebase';
+	import { currentAuthUser } from '$lib/store';
+	import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+	import { get } from 'svelte/store';
+
 	export let seats: string[];
+
+	function uploadBooking() {
+		setDoc(doc(collection(db, 'bookings'), get(currentAuthUser)?.uid), {
+			seat: seats,
+			createdAt: new Date(),
+			status: 'pending'
+		});
+	}
 </script>
 
 <div class="card">
@@ -17,7 +30,7 @@
 
 	<form id="button-container" action="?/checkout" method="post">
 		<input type="hidden" name="seatBooking" bind:value={seats} />
-		<button class="primary">จอง</button>
+		<button class="primary" on:click={uploadBooking}>จอง</button>
 	</form>
 </div>
 

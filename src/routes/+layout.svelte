@@ -16,7 +16,6 @@
 		} else {
 			currentAuthUser.set(null);
 			isSignedIn = false;
-			currentBooking.set(null);
 			console.log('No user detected');
 		}
 	});

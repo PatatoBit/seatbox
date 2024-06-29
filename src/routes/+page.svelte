@@ -9,7 +9,6 @@
 
 	import { page } from '$app/stores';
 	let cancelled = $page.url.searchParams.has('cancelled');
-	let success = $page.url.searchParams.has('success');
 
 	const userData = {
 		name: auth.currentUser?.displayName,
