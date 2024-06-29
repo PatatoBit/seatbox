@@ -67,16 +67,6 @@
 
 	<br />
 
-	<h2>
-		{#if success || cancelled}
-			{#if success}
-				Success!
-			{:else}
-				why did you cancel
-			{/if}
-		{/if}
-	</h2>
-
 	<button class="secondary" on:click={signOut}>ลงชื่อออก</button>
 </main>
 
