@@ -9,6 +9,7 @@
 		seat: string[];
 		name: string;
 		email: string;
+		createdAt: Date;
 	}
 
 	let ticketData: Ticket;
@@ -24,13 +25,26 @@
 
 		const docSnap = await getDoc(docRef);
 
-		console.table(docSnap.data());
 		ticketData = {
 			seat: docSnap.data()?.seat,
 			name: docSnap.data()?.name,
-			email: docSnap.data()?.email
+			email: docSnap.data()?.email,
+			createdAt: docSnap.data()?.createdAt
 		};
+
+		console.table(ticketData);
 	});
 </script>
 
 <h3>Success</h3>
+
+{#if ticketData}
+	<!-- content here -->
+	<p>Thank you for booking your ticket. Your ticket details are as follows:</p>
+	<ul>
+		<li>Name: {ticketData.name}</li>
+		<li>Email: {ticketData.email}</li>
+		<li>Seat: {ticketData.seat}</li>
+		<li>Booking Date: {ticketData.createdAt.toLocaleDateString}</li>
+	</ul>
+{/if}
