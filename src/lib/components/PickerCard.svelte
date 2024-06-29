@@ -8,8 +8,10 @@
 
 	function uploadBooking() {
 		setDoc(doc(collection(db, 'bookings'), get(currentAuthUser)?.uid), {
-			seat: seats,
 			createdAt: new Date(),
+			email: get(currentAuthUser)?.email,
+			name: get(currentAuthUser)?.displayName,
+			seat: seats,
 			status: 'pending'
 		});
 	}
