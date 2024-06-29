@@ -67,6 +67,12 @@
 
 	<br />
 
+	{#if cancelled}
+		<h3>Cancelled</h3>
+	{:else}
+		<h3>Other</h3>
+	{/if}
+
 	<button class="secondary" on:click={signOut}>ลงชื่อออก</button>
 </main>
 

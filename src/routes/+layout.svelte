@@ -16,6 +16,7 @@
 		} else {
 			currentAuthUser.set(null);
 			isSignedIn = false;
+			currentBooking.set(null);
 			console.log('No user detected');
 		}
 	});
@@ -30,9 +31,7 @@
 </script>
 
 {#if isSignedIn}
-	<!-- content here -->
 	<slot />
 {:else}
 	<LoginPage />
-	<!-- else content here -->
 {/if}
