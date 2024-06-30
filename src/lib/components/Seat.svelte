@@ -20,7 +20,11 @@
 
 	onMount(async () => {
 		const bookingsRef = collection(db, 'bookings');
-		const seatQuery = query(bookingsRef, where('seat', 'array-contains', seatPosition));
+		const seatQuery = query(
+			bookingsRef,
+			where('seat', 'array-contains', seatPosition),
+			where('status', '==', 'confirmed')
+		);
 
 		await getDocs(seatQuery).then((snapshot) => (isEmpty = snapshot.empty));
 	});
