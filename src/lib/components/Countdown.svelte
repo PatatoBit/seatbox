@@ -9,7 +9,7 @@
 		const now = new Date();
 		const nextSunday = new Date();
 		nextSunday.setDate(now.getDate() + ((7 - now.getDay()) % 7)); // set to next Sunday
-		nextSunday.setHours(9, 0, 0, 0); // set to 9:00 AM
+		nextSunday.setHours(6, 0, 0, 0); // set to 6:00 AM
 
 		// If today is Sunday and it's past 9:00 AM, set to the next Sunday
 		if (nextSunday <= now) {

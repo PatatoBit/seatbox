@@ -43,7 +43,7 @@ export function isWeekday() {
 export function isInBookingTime() {
 	const now = new Date();
 	const start = new Date(now);
-	start.setHours(9, 0, 0, 0);
+	start.setHours(6, 0, 0, 0);
 
 	const end = new Date(now);
 	end.setHours(18, 0, 0, 0);
