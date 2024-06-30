@@ -14,7 +14,6 @@
 					{#each [1, 2, 3] as rowSeat}
 						<div>
 							<Seat bind:seats seatPosition={`${rowLetter}${rowSeat}`} />
-							<!-- content here -->
 						</div>
 					{/each}
 				</div>

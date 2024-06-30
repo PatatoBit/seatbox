@@ -9,7 +9,6 @@
 
 	import { page } from '$app/stores';
 	let cancelled = $page.url.searchParams.has('cancelled');
-	let success = $page.url.searchParams.has('success');
 
 	const userData = {
 		name: auth.currentUser?.displayName,
@@ -25,18 +24,31 @@
 		return () => clearInterval(interval);
 	});
 
+	// Check if the current time is within 9am sunday until 6pm sunday
+	let isBookingTime: boolean;
+	$: {
+		const now = new Date();
+		const start = new Date(now);
+		start.setHours(6, 0, 0, 0);
+
+		const end = new Date(now);
+		end.setHours(18, 0, 0, 0);
+
+		isBookingTime = now >= start && now <= end;
+	}
+
 	$: start = $dateRange.start;
 	$: end = $dateRange.end;
 </script>
 
 <main class="container">
 	<div class="main-view">
-		<div class="chip">
-			<h3 class="fancy">เริ่มเปิดจองโต๊ะใน</h3>
+		<div class="chip" class:active={isBookingTime}>
+			<h3 class="fancy">{isBookingTime ? 'เปิดจองโต๊ะได้อีก' : 'เริ่มเปิดจองโต๊ะใน'}</h3>
 		</div>
 
 		<div class="countdown">
-			<Countdown />
+			<Countdown bind:isBookingTime />
 		</div>
 
 		<div class="details">
@@ -55,27 +67,23 @@
 		{#if isWeekday()}
 			<div class="main-picker">
 				<SeatPicker bind:seats={selectedSeats} />
-				<PickerCard bind:seats={selectedSeats} />
+				<PickerCard bind:seats={selectedSeats} bind:isBookingTime />
 			</div>
 		{:else}
 			<div class="main-picker">
 				<SeatPicker bind:seats={selectedSeats} />
-				<PickerCard bind:seats={selectedSeats} />
+				<PickerCard bind:seats={selectedSeats} bind:isBookingTime />
 			</div>
 		{/if}
 	</div>
 
 	<br />
 
-	<h2>
-		{#if success || cancelled}
-			{#if success}
-				Success!
-			{:else}
-				why did you cancel
-			{/if}
-		{/if}
-	</h2>
+	{#if cancelled}
+		<h3>Cancelled</h3>
+	{:else}
+		<h3>Other</h3>
+	{/if}
 
 	<button class="secondary" on:click={signOut}>ลงชื่อออก</button>
 </main>
@@ -87,6 +95,9 @@
 		padding: 0.5rem 2rem;
 		margin: 1rem 0;
 		border-radius: 10rem;
+	}
+	.active {
+		background-color: #4caf50;
 	}
 
 	.countdown {
