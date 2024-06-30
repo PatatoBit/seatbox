@@ -44,7 +44,7 @@
 <main class="container">
 	<div class="main-view">
 		<div class="chip" class:active={isBookingTime}>
-			<h3 class="fancy">{isBookingTime ? 'เปิดจองโต๊ะอีก' : 'เริ่มเปิดจองโต๊ะใน'}</h3>
+			<h3 class="fancy">{isBookingTime ? 'เปิดจองโต๊ะได้อีก' : 'เริ่มเปิดจองโต๊ะใน'}</h3>
 		</div>
 
 		<div class="countdown">
