@@ -39,3 +39,14 @@ export function isWeekday() {
 	const dayOfWeek = new Date().getDay();
 	return dayOfWeek > 0 && dayOfWeek < 6;
 }
+
+export function isInBookingTime() {
+	const now = new Date();
+	const start = new Date(now);
+	start.setHours(9, 0, 0, 0);
+
+	const end = new Date(now);
+	end.setHours(18, 0, 0, 0);
+
+	return now >= start && now <= end;
+}

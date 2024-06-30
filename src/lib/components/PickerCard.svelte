@@ -1,19 +1,33 @@
 <script lang="ts">
 	import { db } from '$lib/firebase';
 	import { currentAuthUser } from '$lib/store';
-	import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+	import { collection, doc, setDoc } from 'firebase/firestore';
 	import { get } from 'svelte/store';
+	import { goto } from '$app/navigation';
 
 	export let seats: string[];
+	export let isBookingTime: boolean;
 
-	function uploadBooking() {
-		setDoc(doc(collection(db, 'bookings'), get(currentAuthUser)?.uid), {
-			createdAt: new Date(),
-			email: get(currentAuthUser)?.email,
-			name: get(currentAuthUser)?.displayName,
-			seat: seats,
-			status: 'pending'
-		});
+	async function uploadBooking(e: Event) {
+		if (isBookingTime) {
+			e.preventDefault();
+			await setDoc(doc(collection(db, 'bookings'), get(currentAuthUser)?.uid), {
+				createdAt: new Date(),
+				email: get(currentAuthUser)?.email,
+				name: get(currentAuthUser)?.displayName,
+				seat: seats,
+				status: 'confirmed'
+			});
+			await goto('/success');
+		} else {
+			await setDoc(doc(collection(db, 'bookings'), get(currentAuthUser)?.uid), {
+				createdAt: new Date(),
+				email: get(currentAuthUser)?.email,
+				name: get(currentAuthUser)?.displayName,
+				seat: seats,
+				status: 'pending'
+			});
+		}
 	}
 </script>
 
@@ -30,14 +44,14 @@
 		</div>
 	</div>
 
-	<form id="button-container" action="?/checkout" method="post">
+	<form id="button-container" action="?/checkout" method="post" on:submit={uploadBooking}>
 		<input type="hidden" name="seatBooking" bind:value={seats} />
-		<button
-			class={seats.length < 1 ? 'disabled' : 'primary'}
-			disabled={seats.length < 1}
-			on:click={uploadBooking}>จอง</button
+		<button class={seats.length < 1 ? 'disabled' : 'primary'} disabled={seats.length < 1}
+			>จอง</button
 		>
 	</form>
+
+	<!-- else content here -->
 </div>
 
 <style lang="scss">

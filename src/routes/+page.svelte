@@ -30,10 +30,11 @@
 		const now = new Date();
 		const start = new Date(now);
 		start.setHours(9, 0, 0, 0);
+
 		const end = new Date(now);
 		end.setHours(18, 0, 0, 0);
+
 		isBookingTime = now >= start && now <= end;
-		console.log(isBookingTime);
 	}
 
 	$: start = $dateRange.start;
@@ -66,12 +67,12 @@
 		{#if isWeekday()}
 			<div class="main-picker">
 				<SeatPicker bind:seats={selectedSeats} />
-				<PickerCard bind:seats={selectedSeats} />
+				<PickerCard bind:seats={selectedSeats} bind:isBookingTime />
 			</div>
 		{:else}
 			<div class="main-picker">
 				<SeatPicker bind:seats={selectedSeats} />
-				<PickerCard bind:seats={selectedSeats} />
+				<PickerCard bind:seats={selectedSeats} bind:isBookingTime />
 			</div>
 		{/if}
 	</div>

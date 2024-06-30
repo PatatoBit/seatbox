@@ -2,14 +2,11 @@ import { STRIPE_SECRET_KEY } from '$env/static/private';
 import Stripe from 'stripe';
 import { error, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 
 export const actions: Actions = {
 	checkout: async ({ request }) => {
 		let sessionUrl: string | null;
-
-		// get params
 
 		try {
 			const session = await stripe.checkout.sessions.create({
@@ -32,7 +29,6 @@ export const actions: Actions = {
 		}
 
 		if (sessionUrl) {
-			console.log(sessionUrl);
 			throw redirect(303, sessionUrl);
 		}
 	}

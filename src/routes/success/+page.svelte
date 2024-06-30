@@ -31,8 +31,6 @@
 			email: docSnap.data()?.email,
 			createdAt: docSnap.data()?.createdAt
 		};
-
-		console.log(ticketData);
 	});
 </script>
 
