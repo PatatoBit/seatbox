@@ -24,18 +24,30 @@
 		return () => clearInterval(interval);
 	});
 
+	// Check if the current time is within 9am sunday until 6pm sunday
+	let isBookingTime: boolean;
+	$: {
+		const now = new Date();
+		const start = new Date(now);
+		start.setHours(9, 0, 0, 0);
+		const end = new Date(now);
+		end.setHours(18, 0, 0, 0);
+		isBookingTime = now >= start && now <= end;
+		console.log(isBookingTime);
+	}
+
 	$: start = $dateRange.start;
 	$: end = $dateRange.end;
 </script>
 
 <main class="container">
 	<div class="main-view">
-		<div class="chip">
-			<h3 class="fancy">เริ่มเปิดจองโต๊ะใน</h3>
+		<div class="chip" class:active={isBookingTime}>
+			<h3 class="fancy">{isBookingTime ? 'เปิดจองโต๊ะอีก' : 'เริ่มเปิดจองโต๊ะใน'}</h3>
 		</div>
 
 		<div class="countdown">
-			<Countdown />
+			<Countdown bind:isBookingTime />
 		</div>
 
 		<div class="details">
@@ -82,6 +94,9 @@
 		padding: 0.5rem 2rem;
 		margin: 1rem 0;
 		border-radius: 10rem;
+	}
+	.active {
+		background-color: #4caf50;
 	}
 
 	.countdown {
