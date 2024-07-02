@@ -2,12 +2,11 @@ import { STRIPE_SECRET_KEY } from '$env/static/private';
 import Stripe from 'stripe';
 import { error, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-
 const stripe = new Stripe(STRIPE_SECRET_KEY);
 
 export const actions: Actions = {
 	checkout: async ({ request }) => {
-		let url: string | null;
+		let sessionUrl: string | null;
 
 		try {
 			const session = await stripe.checkout.sessions.create({
@@ -19,19 +18,18 @@ export const actions: Actions = {
 				],
 				mode: 'payment',
 				payment_method_types: ['promptpay'],
-				success_url: `${request.headers.get('origin')}/?success`,
+				success_url: `${request.headers.get('origin')}/success`,
 				cancel_url: `${request.headers.get('origin')}/?cancelled`
 			});
 
-			url = session.url;
+			sessionUrl = session.url;
 		} catch (err) {
 			console.error(err);
 			throw error(500, 'Stripe error');
 		}
 
-		if (url) {
-			console.log(url);
-			throw redirect(303, url);
+		if (sessionUrl) {
+			throw redirect(303, sessionUrl);
 		}
 	}
 };

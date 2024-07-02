@@ -1,18 +1,25 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
+	export let isBookingTime: boolean;
+
 	let timeLeft = { hour: 0, minute: 0, second: 0 };
 
 	function getNextSundayAtNine() {
 		const now = new Date();
 		const nextSunday = new Date();
 		nextSunday.setDate(now.getDate() + ((7 - now.getDay()) % 7)); // set to next Sunday
-		nextSunday.setHours(9, 0, 0, 0); // set to 9:00 AM
+		nextSunday.setHours(6, 0, 0, 0); // set to 6:00 AM
 
 		// If today is Sunday and it's past 9:00 AM, set to the next Sunday
-
 		if (nextSunday <= now) {
 			nextSunday.setDate(nextSunday.getDate() + 7);
+		}
+
+		// If today is sunday and is past 9:00 AM and before 6:00 PM, set to this Sunday at 6:00 PM
+		if (isBookingTime) {
+			now.setHours(18, 0, 0, 0);
+			return now;
 		}
 
 		return nextSunday;
@@ -31,7 +38,6 @@
 	}
 
 	onMount(() => {
-		console.log(getNextSundayAtNine().getDate());
 		updateTimeLeft();
 		const interval = setInterval(updateTimeLeft, 1000);
 		return () => clearInterval(interval);
